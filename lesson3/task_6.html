@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			function horiztonal(num) {
+				var stars = "";
+				for (var i = 0; i <= num; i++) {
+					stars = stars + "x";
+				}
+				return stars;
+			}
+
+			function buildTri(num) {
+				var stars = "";
+				for (var i = 0; i < num; i++) {
+					stars = stars + horiztonal(i) + "\n";
+				}
+				console.log(stars);
+			}
+
+			buildTri(20);
+		</script>
+	</body>
+</html>
