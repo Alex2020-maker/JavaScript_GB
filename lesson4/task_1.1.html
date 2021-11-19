@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 1.1</title>
+</head>
+<body>
+    <script>
+        // Стиль es5 //
+
+        function Product(name, price) {
+            this.name = name;
+            this.price = price;
+        }
+
+        Product.prototype.make25PercentDiscount = function () {
+            this.price = this.price - (this.price / 100 * 25);
+        }
+
+        let products = [
+            new Product('Milk', 200),
+            new Product('Bread', 60),
+            new Product('Cheese', 130)
+        ]
+
+        for (let product of products) {
+            product.make25PercentDiscount();
+        }
+
+        console.log(products)
+
+        // Стиль es6 //
+
+        class Product {
+            constructor(name, price) {
+                this.name = name;
+                this.price = price;
+            }
+
+            make25PercentDiscount() { 
+                this.price = this.price - (this.price / 100 * 25);
+            }
+        }
+
+        let products = [
+            new Product('Milk', 200),
+            new Product('Bread', 60),
+            new Product('Cheese', 130)
+        ]
+
+        for (let product of products) {
+            product.make25PercentDiscount();
+        }
+
+        console.log(products);
+
+
+    </script>
+</body>
+</html>

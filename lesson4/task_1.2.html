@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Задание 1.2</title>
+	</head>
+	<body>
+		<script>
+			// Стиль es5 (a) //
+			function Post(author, text, date) {
+			    this.author = author;
+			    this.text = text;
+			    this.date = date;
+			}
+
+			Post.prototype.edit = function () {
+			    this.text = 'Оставьте отзыв о моей книге';
+			}
+
+			let post1 = [
+			    new Post('Джек Лондон','','20.10.1905'),
+			    new Post('Лев Толстой','','19.10.1887')
+			]
+			for (let text_autor of post1) {
+			    text_autor.edit()
+			}
+
+			console.log(post1)
+
+			// Стиль es6 (a)//
+
+			class Post {
+			    constructor(author, text, date) {
+			        this.author = author;
+			        this.text = text;
+			        this.date = date;
+			    }
+
+			    edit () {
+			        this.text = 'Оставьте отзыв о моей книге';
+			    }
+			}
+
+			let post1 = [
+			    new Post('Джек Лондон','','20.10.1905'),
+			    new Post('Лев Толстой','','19.10.1887')
+			]
+
+			for (let text_autor of post1) {
+			    text_autor.edit()
+			}
+
+			console.log(post1)
+
+			/////////////////////////////////////////////////////////////
+
+			// Стиль es5 (б) //
+
+			function Post(author, text, date) {
+			    this.author = author;
+			    this.text = text;
+			    this.date = date;
+			}
+
+			Post.prototype.edit = function() {
+			    this.text = 'Оставьте отзыв о моей книге';
+			};
+
+			function AttachedPost(author, text, date, highlighted) {
+			    Post.call(this, author, text, date);
+			    this.highlighted = highlighted;
+			}
+
+			AttachedPost.prototype = Object.create(Post.prototype);
+			AttachedPost.prototype.constructor = AttachedPost;
+
+			AttachedPost.prototype.makeTextHighlighted = function() {
+			    this.highlighted = 'true';
+			};
+
+			const post2 = new AttachedPost('Джек Лондон','Роман','20.10.1905','');
+			post2.edit();
+			post2.makeTextHighlighted();
+
+			console.log(post2);
+
+			// Стиль es6 (б) //
+
+			class Post {
+				constructor(author, text, date) {
+					this.author = author;
+					this.text = text;
+					this.date = date;
+				}
+
+				edit() {
+					this.text = "Оставьте отзыв о моей книге";
+				}
+			}
+
+			class AttachedPost extends Post {
+				constructor(author, text, date, highlighted) {
+					super(author, text, date);
+					this.highlighted = highlighted;
+				}
+
+				makeTextHighlighted() {
+					this.highlighted = "true";
+				}
+			}
+
+			const post2 = new AttachedPost(
+				"Джек Лондон",
+				"Роман",
+				"20.10.1905",
+				""
+			);
+
+			post2.edit();
+			post2.makeTextHighlighted();
+
+			console.log(post2);
+		</script>
+	</body>
+</html>
